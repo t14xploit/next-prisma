@@ -18,6 +18,8 @@ model Product{
   name String
   price Decimal 
   inStock Boolean @default(true)
+  description String?
+  image String?
 
   @@map("products")
 }
