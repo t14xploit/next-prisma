@@ -29,10 +29,11 @@ export default async function ProductDetailsPage(props:{params:Params}) {
         </p>
         {product.inStock? (
             <p className="text-green-500">Available</p>
+
         ): (
             <p className="text-red-500">Out of stock</p>
         )}
-        <button className="text-center px-3 py-2 rounded-lg bg-slate-900 text-white">Add to cart</button>
+        <button className="text-center px-3 py-2 rounded-lg bg-slate-900 text-white disabled:opacity-50 disabled:cursor-not-allowed" disabled={!product.inStock}>Add to cart</button>
     </div>
   )
 }
