@@ -1,10 +1,16 @@
 "use client";
 
 import { createProduct } from "./actions";
+import { useActionState } from "react";
+
 
 export default function CreateProductForm() {
+    const [state, formAction, isPending] = useActionState(createProduct, {message: ""});
+
     return (
-        <form className="space-y-4" action={createProduct}>
+        <form className="space-y-4" action={formAction}>
+
+            {state.message && <p>{state.message}</p>}
             <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-200">
                     Name
@@ -60,7 +66,7 @@ export default function CreateProductForm() {
                 ></textarea>
             </div>
             <button type="submit" className="py-3 px-6 bg-indigo-600 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 transition duration-200"
-            >Submit</button>
+            disabled={isPending}>{isPending?"Submitting" : "Submit"}</button>
         </form>
 
     )
