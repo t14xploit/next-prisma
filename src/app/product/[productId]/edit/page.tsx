@@ -24,6 +24,6 @@ if(!product){
 }
 
     return (
-    <div> Product {product.id} Edit page</div>
+    <div> Product {product.name} Edit page</div>
   )
 }
