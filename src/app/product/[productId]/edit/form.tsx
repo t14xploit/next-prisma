@@ -3,9 +3,10 @@
 import { Product } from "@prisma/client";
 import { editProduct } from "./actions";
 import { useActionState } from "react";
+import { ProductWithNumberPrice } from "./page";
 
 type Props ={
-    product:Product;
+    product:ProductWithNumberPrice;
 }
 export default function EditProductForm({product}:Props) {
     const [state, formAction, isPending] = useActionState(

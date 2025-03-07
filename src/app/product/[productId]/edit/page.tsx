@@ -1,5 +1,7 @@
 import { prisma } from "@/lib/prisma";
 import { notFound } from "next/navigation";
+import EditProductForm from "./form";
+import { Product } from "@prisma/client";
 
 type Params = Promise<{
     productId: string;
@@ -7,6 +9,9 @@ type Params = Promise<{
 
 type Props ={
     params:Params;
+}
+export type ProductWithNumberPrice = Omit<Product, "price"> & {
+price:number;
 }
 
 export default async function EditProductPage(props:Props) {
@@ -22,8 +27,14 @@ export default async function EditProductPage(props:Props) {
 if(!product){
     notFound();
 }
-
+ const productWithNumberPrice: ProductWithNumberPrice = {
+    ...product,
+    price:product.price.toNumber(),
+ }
     return (
-    <div> Product {product.name} Edit page</div>
+    <div> 
+        <h1>Edit Product</h1>
+        <EditProductForm product={productWithNumberPrice}/>
+    </div>
   )
 }
