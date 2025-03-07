@@ -27,6 +27,7 @@ export default function EditProductForm({product}:Props) {
                     name="name"
                     type="text"
                     id="name"
+                    defaultValue={product.name}
                     className="mt-1 block  px-4 py-2 bg-gray-800 text-white rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 />
             </div>
@@ -38,6 +39,8 @@ export default function EditProductForm({product}:Props) {
                 name="price"
                     type="text"
                     id="price"
+                    defaultValue={product.price}
+
                     className="mt-1 block  px-4 py-2 bg-gray-800 text-white rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 />
             </div>
@@ -49,6 +52,8 @@ export default function EditProductForm({product}:Props) {
                 name="image"
                     type="text"
                     id="image"
+                    defaultValue={product.image??" "}
+
                     className="mt-1 block  px-4 py-2 bg-gray-800 text-white rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 />
             </div>
@@ -60,6 +65,7 @@ export default function EditProductForm({product}:Props) {
                 name="inStock"
                     type="checkbox"
                     id="inStock"
+                    defaultChecked={product.inStock}
                     className="mt-1 block w-5 h-5 text-indigo-500 focus:ring-indigo-500 bg-gray-700 border-gray-600 rounded"
                 />
             </div>
@@ -70,6 +76,8 @@ export default function EditProductForm({product}:Props) {
                 <textarea
                 name="description"
                     id="description"
+                    defaultValue={product.description??""}
+
                     className="mt-1 block  px-4 py-2 bg-gray-800 text-white rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 ></textarea>
             </div>
