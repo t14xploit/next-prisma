@@ -1,6 +1,8 @@
 import {prisma} from "@/lib/prisma";
 import { notFound } from "next/navigation";
 import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import DeleteProductButton from "@/components/DeleteProductButton";
 
 type Params = Promise<{
     productId: string;
@@ -47,12 +49,11 @@ export default async function ProductDetailsPage(props:{params:Params}) {
             ) : (
                 <p className="text-red-500 font-semibold">Out of stock</p>
             )}
-            <button
-                className="mt-4 px-6 py-3 rounded-lg bg-slate-900 text-white font-semibold hover:bg-slate-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-                disabled={!product.inStock}
+            <Button size="lg" disabled={!product.inStock} className="mt-5"
             >
                 Add to cart
-            </button>
+            </Button> 
+        <DeleteProductButton/>
         </div>
     </div>
 </div>
