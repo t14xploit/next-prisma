@@ -53,7 +53,7 @@ export default async function ProductDetailsPage(props:{params:Params}) {
             >
                 Add to cart
             </Button> 
-        <DeleteProductButton/>
+        <DeleteProductButton productId={product.id}/>
         </div>
     </div>
 </div>
