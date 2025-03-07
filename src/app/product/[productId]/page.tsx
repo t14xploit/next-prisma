@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import DeleteProductButton from "@/components/DeleteProductButton";
+import Link from "next/link";
 
 type Params = Promise<{
     productId: string;
@@ -53,6 +54,12 @@ export default async function ProductDetailsPage(props:{params:Params}) {
             >
                 Add to cart
             </Button> 
+        <Button asChild size="lg">
+
+            <Link href={`/product/${product.id}/edit`}   className="mt-5"
+            >
+Edit Product            </Link> 
+                </Button>
         <DeleteProductButton productId={product.id}/>
         </div>
     </div>
