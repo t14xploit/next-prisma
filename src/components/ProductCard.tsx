@@ -1,29 +1,28 @@
 import { Product } from "@prisma/client";
 import Link from "next/link";
 import { Button } from "./ui/button";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "./ui/card";
 
 
 interface ProductCardProps {
-    product:Product;
+  product: Product;
 }
 
 
-export default function ProductCard({product}:ProductCardProps) {
+export default function ProductCard({ product }: ProductCardProps) {
   return (
-    <div className="text-black p-4 rounded-lg bg-slate-100 shadow space-y-2">
-        <h2 className=" text-lg font-bold">
-            {product.name}
-        </h2>
-        <p>${product.price.toNumber()}</p>
-{/* convert toNumber (decimal from prisma ) */}
-        {product.inStock? 
-            <p className="text-green-500 text-sm">Available</p>: <p className="text-red-500 text-sm">Out of stock</p>}
-             <Button asChild className="w-full">
-              <Link href={`/product/${product.id}`} >
+    <Card>
+      <CardHeader>
+        <CardTitle> {product.name}</CardTitle>
+        <CardDescription> ${product.price.toNumber()}</CardDescription>
+      </CardHeader>
+      <CardContent> {product.inStock ? <p className="text-green-500 text-sm">Available</p> : <p className="text-red-500 text-sm">Out of stock</p>}</CardContent>
+      <CardFooter>
+        <Button asChild className="w-full">
+          <Link href={`/product/${product.id}`}>Details</Link>
+        </Button>
+      </CardFooter>
 
-        Details
-      </Link>
-             </Button>
-    </div>
+    </Card>
   )
 }
