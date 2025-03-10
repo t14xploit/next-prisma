@@ -1,6 +1,4 @@
-import Link from "next/link"
 import CreateProductForm from "./form"
-import { Button } from "@/components/ui/button"
 
 export default function CreateProductPage(){
     return(
