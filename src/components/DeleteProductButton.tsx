@@ -22,6 +22,6 @@ export default function DeleteProductButton({productId}:DeleteProductButtonProps
  }
  
     return (
-    <Button size="lg" onClick={handleClick} disabled={isPending}>{isPending? "Deleting...":"Delete product"}</Button>
+    <Button size="lg" onClick={handleClick} disabled={isPending} variant="destructive">{isPending? "Deleting...":"Delete product"}</Button>
   )
 }
