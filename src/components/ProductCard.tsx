@@ -19,7 +19,7 @@ export default function ProductCard({product}:ProductCardProps) {
         {product.inStock? 
             <p className="text-green-500 text-sm">Available</p>: <p className="text-red-500 text-sm">Out of stock</p>}
              <Button asChild className="w-full">
-              <Link href={`/product/${product.id}`} className=" text-center block px-3 py-2 rounded-lg bg-slate-900 text-white">
+              <Link href={`/product/${product.id}`} >
 
         Details
       </Link>
