@@ -11,6 +11,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { AlertCircle } from "lucide-react";
+import Link from "next/link";
 
 type Props ={
     product:ProductWithNumberPrice;
@@ -80,8 +81,13 @@ export default function EditProductForm({product}:Props) {
                     In Stock
                 </Label>
             </div>
-            <Button type="submit"
-            disabled={isPending}>{isPending?"Submitting" : "Submit"}</Button>
+            
+                    <div className="flex gap-2">
+                <Button type="submit" disabled={isPending}>{isPending ? "Submitting" : "Submit"}</Button>
+                <Button asChild variant="secondary">
+                    <Link href="/">Go back</Link>
+                </Button>
+            </div>
         </form>
 
     )
