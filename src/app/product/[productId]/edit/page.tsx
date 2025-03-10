@@ -33,7 +33,8 @@ if(!product){
  }
     return (
     <div> 
-        <h1>Edit Product</h1>
+        <h1 className=" mt-4 text-3xl text-center
+             font-bold">Edit Product</h1>
         <EditProductForm product={productWithNumberPrice}/>
     </div>
   )

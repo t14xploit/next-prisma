@@ -50,7 +50,7 @@ export default async function ProductDetailsPage(props: { params: Params }) {
                         ) : (
                             <p className="text-red-500 font-semibold">Out of stock</p>
                         )}
-                        <div className="flex  gap-4">
+                        <div className="flex  gap-4 mt-6">
 
                         <Button size="lg" disabled={!product.inStock}  >
                             Add to cart

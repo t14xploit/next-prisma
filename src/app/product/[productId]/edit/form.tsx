@@ -4,6 +4,13 @@ import { Product } from "@prisma/client";
 import { editProduct } from "./actions";
 import { useActionState } from "react";
 import { ProductWithNumberPrice } from "./page";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { AlertCircle } from "lucide-react";
 
 type Props ={
     product:ProductWithNumberPrice;
@@ -16,73 +23,65 @@ export default function EditProductForm({product}:Props) {
         });
 
     return (
-        <form className="space-y-4" action={formAction}>
+        <form className="space-y-4 max-w-4xl mx-auto" action={formAction}>
 
-            {state.message && <p>{state.message}</p>}
+            {state.message && (
+                <Alert variant="destructive"className="mt-4">
+                    <AlertCircle className="w-4 h-4"/>
+                    <AlertTitle>Error!</AlertTitle>
+                    <AlertDescription>{state.message}</AlertDescription>
+                </Alert>
+            )}
             <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-200">
+                <Label htmlFor="name">
                     Name
-                </label>
-                <input
+                </Label>
+                <Input
                     name="name"
                     type="text"
                     id="name"
                     defaultValue={product.name}
-                    className="mt-1 block  px-4 py-2 bg-gray-800 text-white rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 />
             </div>
             <div>
-                <label htmlFor="price" className="block text-sm font-medium text-gray-200">
+                <Label htmlFor="price" >
                     Price
-                </label>
-                <input
+                </Label>
+                <Input
                 name="price"
                     type="text"
                     id="price"
                     defaultValue={product.price}
-
-                    className="mt-1 block  px-4 py-2 bg-gray-800 text-white rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 />
             </div>
             <div>
-                <label htmlFor="image" className="block text-sm font-medium text-gray-200">
+                <Label htmlFor="image">
                     Image
-                </label>
-                <input
+                </Label>
+                <Input
                 name="image"
                     type="text"
                     id="image"
-                    defaultValue={product.image??" "}
+                    defaultValue={product.image??" "}                />
+            </div>
 
-                    className="mt-1 block  px-4 py-2 bg-gray-800 text-white rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                />
-            </div>
             <div>
-                <label htmlFor="inStock" className="block text-sm font-medium text-gray-200">
-                    In Stock
-                </label>
-                <input
-                name="inStock"
-                    type="checkbox"
-                    id="inStock"
-                    defaultChecked={product.inStock}
-                    className="mt-1 block w-5 h-5 text-indigo-500 focus:ring-indigo-500 bg-gray-700 border-gray-600 rounded"
-                />
-            </div>
-            <div>
-                <label htmlFor="description" className="block text-sm font-medium text-gray-200">
+                <Label htmlFor="description">
                     Description
-                </label>
-                <textarea
+                </Label>
+                <Textarea
                 name="description"
                     id="description"
-                    defaultValue={product.description??""}
-
-                    className="mt-1 block  px-4 py-2 bg-gray-800 text-white rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                ></textarea>
+                    defaultValue={product.description??""} ></Textarea>
             </div>
-            <button type="submit" className="py-3 px-6 bg-indigo-600 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 transition duration-200"
-            disabled={isPending}>{isPending?"Submitting" : "Submit"}</button>
+            <div className="flex items-center gap-2">
+                <Checkbox name="inStock" id="inStock" defaultChecked={product.inStock}/>
+                <Label htmlFor="inStock" >
+                    In Stock
+                </Label>
+            </div>
+            <Button type="submit"
+            disabled={isPending}>{isPending?"Submitting" : "Submit"}</Button>
         </form>
 
     )
